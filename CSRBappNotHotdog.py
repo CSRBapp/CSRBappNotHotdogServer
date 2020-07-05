@@ -14,7 +14,7 @@ sys.path.append("hotdog-or-not-hotdog/")
 from label_dog import *
 
 # open the local CSRB Channel to receive activity execution requests from remote CSRBnodes
-h = CSRBmessageOpen("/mnt/CSRB/MESSAGE/00000000000000000000000000000000/5EF25423F787C644");
+h = CSRBmessageOpen("~/CSRBVFS/MESSAGE/00000000000000000000000000000000/5EF25423F787C644");
 
 while True:
 	ret,m = CSRBmessageReceive(h);
@@ -33,7 +33,7 @@ while True:
 	fileBlocks = math.ceil(m.header.params[1].num / 1024)
 
 	# open the block of Objects from the REMOTE CSRBnode's CSRBdb, as a virtual local file
-	localFile = "/mnt/CSRB/OBJECTBLOCK/" + \
+	localFile = "~/CSRBVFS/OBJECTBLOCK/" + \
 		str(m.header.params[0].id) + "/" + \
 		str(m.header.params[1].id) + m.header.params[1].numHexBlocks(1024)
 
@@ -55,7 +55,7 @@ while True:
 	#os.system("qiv " + localFile + " &")
 
 	# open a CSRB Channel to the remote CSRBnode's address and Channel ID
-	rh = CSRBmessageOpen("/mnt/CSRB/MESSAGE/" +
+	rh = CSRBmessageOpen("~/CSRBVFS/MESSAGE/" +
 		str(m.header.params[0].id) + "/" +
 		format(m.header.params[0].num, '0>16X'))
 	if rh == None:
