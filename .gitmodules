@@ -1,0 +1,7 @@
+[submodule "CSRBbin"]
+	path = CSRBbin
+	url = https://github.com/CSRBapp/CSRBbin.git
+[submodule "hotdog-or-not-hotdog"]
+	path = hotdog-or-not-hotdog
+	url = https://github.com/CSRBapp/hotdog-or-not-hotdog.git
+	branch = CSRB
