@@ -30,12 +30,12 @@ while True:
 	print("Received message: " + str(m))
 
 	# calculate the number of Objects used to store the image file
-	fileBlocks = math.ceil(m.header.params[1].num / 1024)
+	fileBlocks = math.ceil(m.header.params[1].num / 32768)
 
 	# open the block of Objects from the REMOTE CSRBnode's CSRBdb, as a virtual local file
 	localFile = "~/CSRBVFS/OBJECTBLOCK/" + \
 		str(m.header.params[0].id) + "/" + \
-		str(m.header.params[1].id) + m.header.params[1].numHexBlocks(1024)
+		str(m.header.params[1].id) + m.header.params[1].numHexBlocks(32768)
 
 	print("File: " + localFile)
 
