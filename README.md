@@ -9,7 +9,7 @@
     ```
 1. Start *CSRBappNothotdog.py*:
     ```
-    python3 CSRBappNotHotdog.py
+    CSRBVFS=~/CSRBVFS python3 CSRBappNotHotdog.py
     ```
     
 # QUICKSTART
