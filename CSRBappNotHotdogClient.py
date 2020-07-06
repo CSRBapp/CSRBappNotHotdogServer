@@ -11,9 +11,11 @@ PROCESSORNODEID = sys.argv[2]
 IMAGEFILENAME = sys.argv[3]
 
 # open the local CSRB Channel to receive the result
+print("Opening Local CSRB Channel")
 channelLocal = CSRBmessageOpen("/mnt/CSRB/MESSAGE/00000000000000000000000000000000/5EF25423F787C644");
 
 # open the remote CSRB Channel to send the image processing command
+print("Opening Remote CSRB Channel")
 channelRemote = CSRBmessageOpen("/mnt/CSRB/MESSAGE/" + PROCESSORNODEID + "/5EF25423F787C644");
 
 imageSize = os.stat(IMAGEFILENAME).st_size
