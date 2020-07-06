@@ -1,10 +1,12 @@
 # vim: set ts=8 sts=8 sw=8 tw=0 noet:
 
-from CSRBfuseAPI import *
 import time
 import os
 import sys
 import shutil
+
+sys.path.append("CSRBbin/pyCSRB/")
+from CSRBfuseAPI import *
 
 NODEID = sys.argv[1]
 PROCESSORNODEID = sys.argv[2]
@@ -58,3 +60,9 @@ print(messageReceive)
 CSRBmessageClose(channelRemote)
 CSRBmessageClose(channelLocal)
 
+print("***")
+if messageReceive.header.params[0].num == 1:
+	print("HOTDOG")
+else:
+	print("NOT HOTDOG")
+print("***")
