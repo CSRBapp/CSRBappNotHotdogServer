@@ -9,14 +9,15 @@ import shutil
 NODEID = sys.argv[1]
 PROCESSORNODEID = sys.argv[2]
 IMAGEFILENAME = sys.argv[3]
+CSRBVFS = os.environ.get("CSRBVFS", "/mnt/CSRB")
 
 # open the local CSRB Channel to receive the result
 print("Opening Local CSRB Channel")
-channelLocal = CSRBmessageOpen("/mnt/CSRB/MESSAGE/00000000000000000000000000000000/5EF25423F787C644");
+channelLocal = CSRBmessageOpen(CSRBVFS + "/MESSAGE/00000000000000000000000000000000/5EF25423F787C644");
 
 # open the remote CSRB Channel to send the image processing command
 print("Opening Remote CSRB Channel")
-channelRemote = CSRBmessageOpen("/mnt/CSRB/MESSAGE/" + PROCESSORNODEID + "/5EF25423F787C644");
+channelRemote = CSRBmessageOpen(CSRBVFS + "/MESSAGE/" + PROCESSORNODEID + "/5EF25423F787C644");
 
 imageSize = os.stat(IMAGEFILENAME).st_size
 imageSizeObjects = math.ceil(imageSize / 32768)
@@ -26,7 +27,7 @@ imageOBJECTBLOCK = "5EF25423F787C6445EF25423F787C644" + "{:08X}".format(imageSiz
 print("Image's OBJECTBLOCK: %s" % imageOBJECTBLOCK)
 
 print("Copying image [%s] to OBJECTBLOCK [%s]" % (IMAGEFILENAME, imageOBJECTBLOCK))
-shutil.copyfile(IMAGEFILENAME, "/mnt/CSRB/OBJECTBLOCK/00000000000000000000000000000000/" + imageOBJECTBLOCK)
+shutil.copyfile(IMAGEFILENAME, CSRBVFS + "/OBJECTBLOCK/00000000000000000000000000000000/" + imageOBJECTBLOCK)
 
 print("Assembling CSRB message")
 messageSend = CSRBprotocolMessage()
