@@ -59,12 +59,14 @@ while True:
 		str(m.header.params[0].id) + "/" +
 		format(m.header.params[0].num, '0>16X')))
 	if rh == None:
+		print("FAILED TO OPEN SEND MESSAGE")
 		continue
 
 	# assemble a simple Message with the image recognition result
 	rm = CSRBprotocolMessage()
 	rm.header.params[0].num = r[1]
 
+	print("Sending Results message")
 	# send the Message to the CSRBnode that requested the activity
 	CSRBmessageSend(rh, rm)
 
@@ -72,7 +74,9 @@ while True:
 	CSRBmessageClose(rh)
 
 	# rinse, repeat
+	print("Processing complete")
 
 # cleanup
 CSRBmessageClose(h)
+print("Terminating")
 
