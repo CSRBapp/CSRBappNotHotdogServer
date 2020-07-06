@@ -63,7 +63,7 @@ python3 CSRBappNotHotdogClient.py <NODEID> <SERVER_NODEID> hotdog-or-not-hotdog/
 
 # NOTES
 ## Increasing zram swap in GCP Cloud Shell
-'''
+```
 swapoff /dev/zram0
 mount -o remount,rw
 echo 1 > /sys/block/zram0/reset
@@ -73,4 +73,4 @@ echo 1 > /sys/block/zram0/reset
 echo $((1*1024*1024*1024)) > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon /dev/zram0
-'''
+```
