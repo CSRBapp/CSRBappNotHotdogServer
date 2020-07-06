@@ -17,7 +17,7 @@
 ### INIT
 ```
 sudo apt install fuse3
-git clone --recurse-submodules https://CSRBapp@github.com/CSRBapp/CSRBappNotHotdogServer.git
+git clone --recurse-submodules https://github.com/CSRBapp/CSRBappNotHotdogServer.git
 mkdir ~/CSRBSTORAGE
 mkdir ~/CSRBVFS
 ```
